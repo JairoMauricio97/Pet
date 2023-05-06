@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1 class="text-center">Blog Perritos- PetFriedly</h1>
+<div class="row">
+    {% for perrito in perritos %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" height="400px" width="50px" src="{% static perrito.imagen %}">
+            <div class="card-body">
+                <h5 class="card-title">Nombre:{{ perrito.nombre }}</h5>
+                <h5 class="card-title">Edad:{{ perrito.edad}}</h5>
+                <p class="card-text">{{ perrito.historia }}</p>
+                <a href="{% url 'perritoDetalle' perrito.pk %}" class="btn btn-primary">
+                    Leer mas
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
